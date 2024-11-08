@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!doctype html>
+<html lang="sv">
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>Welcome {{username}}</h1>
+    <h2>Your To-Do List</h2>
+    <ul>
+    {% for todo in list %}
+    <li><b>{{ list[todo]["item"] }}:</b> {{ list[todo]["bio"] }} <a href="/remove/{{ todo }}">Remove</a></li>
+    {% endfor %}
+    </ul>
+    <form method="post">
+    <h3>Add new item</h3>
+    <p>Item: <input type="text" name="todo" required></p>
+    <p>Description: <input type="text" name="bio"></p>
+    <input type="submit" value="Add">
+    </form>
+    
+</body>
+</html>
+{% endblock %}
